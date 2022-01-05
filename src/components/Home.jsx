@@ -6,14 +6,10 @@ import { Link } from 'react-router-dom';
 const Home = () => {
     const [text, setText] = useState("");
 
-    const handleClick = () => {
-
-    }
-
     return (
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <TextField value={text} onChange={(e) => setText(e.target.value)} id="outlined-basic" label="Outlined" variant="outlined" />
-            <Link to={`/search/q=${text}`}><Button variant="contained" color="primary" onClick={handleClick}>SEARCH</Button></Link>
+            <Link to={`/search/q=${text}`}><Button variant="contained" color="primary">SEARCH</Button></Link>
         </div>
     );
 }

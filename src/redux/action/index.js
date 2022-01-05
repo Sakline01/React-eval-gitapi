@@ -24,8 +24,9 @@ export const getRepoFailure = () => {
         }
     };
 };
-export const auth = () => {
+export const auth = (val) => {
     return {
         type: "AUTH",
+        payload: val
     };
 };

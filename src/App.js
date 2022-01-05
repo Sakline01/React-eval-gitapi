@@ -4,34 +4,24 @@ import Nav from './components/Nav';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Search from './components/Search';
 import Login from './components/Login';
-import { useDispatch, useSelector } from 'react-redux';
+import PrivateRoute from "./privateroute";
+
 function App() {
-  const isAuth = useSelector(state => state.Auth);
-  if (isAuth) {
-    return (
 
-      <Router>
-        <Nav />
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/search" component={Search} exact />
-          <Route path="/login" component={Login} />
-          <Route path="/search/q=:querry" component={Search} />
-        </Switch>
-      </Router>
-    );
-  }
-  else {
-    return (
+  return (
 
-      <Router>
-        <Nav />
-        <Switch>
-          <Route path="/login" component={Login} />
-        </Switch>
-      </Router>
-    );
-  }
+    <Router>
+      <Nav />
+      <Switch>
+        <Route path="/" component={Login} exact />
+        <PrivateRoute exact={true} path="/home" component={Home} />
+        <Route path="/search" component={Search} exact />
+
+        <Route path="/search/q=:querry" component={Search} />
+      </Switch>
+    </Router>
+  );
+
 }
 
 export default App;

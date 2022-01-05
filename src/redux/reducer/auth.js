@@ -1,8 +1,8 @@
-const auth = (state = false, action) => {
+
+const auth = (state = { isAuth: false }, action) => {
     switch (action.type) {
-        case "AUTH": {
-            return state = !state;
-        }
+        case "AUTH":
+            return { ...state, isAuth: action.payload };
         default:
             return state;
     }

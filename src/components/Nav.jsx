@@ -39,11 +39,11 @@ export default function ButtonAppBar() {
                     </IconButton> */}
 
                     <Typography variant="h6" className={classes.title}>
-                        <Link style={styles} to="/">  Home</Link>
+                        <Link style={styles} to="/home">  Home</Link>
                     </Typography>
 
 
-                    <Button color="inherit"><Link style={styles} to="/login">Login</Link></Button>
+                    <Button color="inherit"><Link style={styles} to="/">Login</Link></Button>
 
                 </Toolbar>
             </AppBar>
