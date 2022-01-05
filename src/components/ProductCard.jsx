@@ -1,39 +1,51 @@
 import React from 'react';
-import styles from './productcard.module.css';
+import { makeStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
-import AddIcon from '@material-ui/icons/Add';
-import RemoveIcon from '@material-ui/icons/Remove';
-import { useDispatch } from 'react-redux';
-import { increment, decrement, adds, deletes } from '../redux/action';
-import { useState } from 'react';
+import Typography from '@material-ui/core/Typography';
 
-const Productcard = ({ id, price, image }) => {
-    const [qty, setQty] = useState(0);
+const useStyles = makeStyles({
+    root: {
+        minWidth: 275,
+        maxWidth: 400
+    },
+    bullet: {
+        display: 'inline-block',
+        margin: '0 2px',
+        transform: 'scale(0.8)',
+    },
+    title: {
+        fontSize: 14,
+    },
+    pos: {
+        marginBottom: 12,
+    },
+});
 
-    const dispatch = useDispatch();
-    console.log(qty);
+export default function OutlinedCard({ url, create, desc, name }) {
+    const classes = useStyles();
+
     return (
-        <div className={styles.card}>
-            <div>
-                <img className={styles.circle} src={image} alt="" />
-            </div>
-            <div className={styles.description}>
-                <div>
-                    <h1>${price}</h1>
-                </div>
-                <div className={styles.qty}>
-                    <RemoveIcon onClick={qty > 0 ? () => { dispatch(deletes(id)); dispatch(decrement()); setQty(qty - 1) } : null} style={{ fontSize: 50 }} />
-                    <h2>{qty}</h2>
-                    <AddIcon onClick={() => { dispatch(adds(id)); dispatch(increment()); setQty(qty + 1) }} style={{ fontSize: 50 }} />
-                </div>
-                <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'center' }}>
-                    <Button variant="outlined" color="primary" >
-                        Buy
-                    </Button>
-                </div>
-            </div>
-        </div>
+        <Card className={classes.root} variant="outlined">
+            <CardContent>
+                <Typography className={classes.title} color="textSecondary" gutterBottom>
+                    {name}
+                </Typography>
+                <Typography variant="h5" component="h2">
+                    {name}
+                </Typography>
+                <Typography className={classes.pos} color="textSecondary">
+                    created at:{create}
+                </Typography>
+                <Typography variant="body2" component="p">
+                    {desc}
+                </Typography>
+            </CardContent>
+            <CardActions>
+                <Button size="small" href={url} >Repository</Button>
+            </CardActions>
+        </Card>
     );
 }
-
-export default Productcard;
