@@ -1,9 +1,6 @@
 export const getRepoRequest = () => {
     return {
-        type: "GETREPOREQUEST",
-        payload: {
-            isLoading: true
-        }
+        type: "GETREPOREQUEST"
     };
 };
 
@@ -18,10 +15,7 @@ export const getRepoSuccess = (repos) => {
 
 export const getRepoFailure = () => {
     return {
-        type: "GETREPOFAILURE",
-        payload: {
-            isError: true
-        }
+        type: "GETREPOFAILURE"
     };
 };
 export const auth = (val) => {
